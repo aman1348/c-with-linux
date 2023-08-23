@@ -60,7 +60,26 @@ char* get_substring(char* str , int start , int end)
 
 char* sum_strings(char* str1 , char* str2)
 {
-
+	int n = strlen(str1);
+	// int m = strlen(str2);
+	int i = n;
+	char* sum = (char*)malloc(i*sizeof(char)+2);
+	int carry = 0 , temp = 0;
+	while(i>0)
+	{
+	    temp = (str1[i-1]-'0')+(str2[i-1]-'0')+carry;
+	    carry = temp/2;
+	    sum[i] = (temp%2)+'0';
+	    i--;
+	}
+	sum[i] = carry+'0';
+	sum[n+1] = '\0';
+	if(sum[0]=='0')
+	{
+	
+	    return sum+1;
+	}
+	return sum;
 
 }
 
